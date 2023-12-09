@@ -6,3 +6,6 @@ mysql -u root -p
 sql>  source init.sql;
 sql> exit;
 ```
+
+
+#FIX HTACCESS

@@ -9,7 +9,7 @@ class DB_Connection {
     private $dbname;
     private $conn;
     function __construct() {
-        $this->servername = "localhost";
+        $this->servername = "db";
         $this->username = "root";
         $this->password = "password";
         $this->dbname = "LinkExtender";

@@ -52,13 +52,11 @@ include 'utils.php';
         $result = $db->query_url(md5($path));
         if ($result) {
             header("Location: " . $result);
+            die();
         }
         else {
             die("Invalid path");
         }
-    }
-    else if ($url !== "/") {
-        header("Location: /");
     }?>
     </div>
 </body>
