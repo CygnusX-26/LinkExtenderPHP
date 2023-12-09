@@ -2,6 +2,7 @@
 $BASE_URL = 'http://localhost:8000';
 include 'database.php';
 include 'utils.php';
+ob_start();
 ?>
 <html lang="en">
 <head>
@@ -52,11 +53,19 @@ include 'utils.php';
         $result = $db->query_url(md5($path));
         if ($result) {
             header("Location: " . $result);
+            ob_end_flush();
             die();
         }
         else {
             die("Invalid path");
         }
+    } else {
+        if ($url !== "/") {
+            header("Location: " . "/");
+            ob_end_flush();
+            die();
+        }
+
     }?>
     </div>
 </body>
