@@ -7,13 +7,16 @@ include 'utils.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="/index.php" method="post">
-    Url: <input type="text" name="url"><br>
-    <input type="submit">
+    <h1>Link Extender</h1>
+    <form action="/index.php" method="post" class="form">
+    <label><input id="fname" type="text" name="url", placeholder="URL"><br></label>
+    <input type="submit" class="login" value="Submit">
     </form>
+    <div class="php-response">
     <?php 
     $url = $_SERVER['REQUEST_URI'];
     $db = new DB_Connection();
@@ -31,10 +34,10 @@ include 'utils.php';
             }
         } while ($db->exists_path($path));
         $md5_path = md5($path);
-        if ($db->exists($_POST['url'])) {
-            $res = $db->query_path($_POST['url']);
-            die("<a href='".$BASE_URL . "/a/" . $res ."'>" . $BASE_URL . "/a/" . $res . "</a>");
-        }
+        // if ($db->exists($_POST['url'])) {
+        //     $res = $db->query_path($_POST['url']);
+        //     die("<a href='".$BASE_URL . "/a/" . $res ."'>" . $BASE_URL . "/a/" . $res . "</a>");
+        // }
         if ($db->insert($_POST['url'], $md5_path)) {
             die("<a href='".$BASE_URL . "/a/" . $path."'>" . $BASE_URL . "/a/" . $path . "</a>");
         }
@@ -53,10 +56,10 @@ include 'utils.php';
         else {
             die("Invalid path");
         }
-        
     }
     else if ($url !== "/") {
         header("Location: /");
     }?>
+    </div>
 </body>
 </html>

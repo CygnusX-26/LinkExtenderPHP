@@ -13,7 +13,7 @@ class DB_Connection {
         $this->username = "root";
         $this->password = "password";
         $this->dbname = "LinkExtender";
-        $this->conn = new mysqli($servername, $username, $password, $dbname);
+        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
